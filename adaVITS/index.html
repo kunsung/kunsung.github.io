@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>AdaVITS: Tiny VITS for Low Computing Resource Speaker Adaptation</title>
+<meta name="generator" content="Jekyll v3.9.0">
+<meta property="og:title" content="TODO: title">
+<meta property="og:locale" content="en_US">
+<link rel="canonical" href="https://kunsung.github.io/adaVITS/">
+<meta property="og:url" content="https://kunsung.github.io/adaVITS/">
+<meta name="twitter:card" content="summary">
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body data-new-gr-c-s-check-loaded="14.1001.0" data-gr-ext-installed="">
+    <section class="page-header">
+    <!-- <h1 class="project-name">Demo PAGE</h1> -->
+    <!-- <h2 class="project-tagline"></h2> -->
+
+
+    </section>
+
+<section class="main-content">
+      <h1 id=""><center>AdaVITS: Tiny VITS for Low Computing Resource Speaker Adaptation</center></h1>
+
+<center> Kun Song, Heyang Xue, Xinsheng Wang, Jian Cong, Yongmao Zhang, Lei Xie, Bing Yang, Xiong Zhang, Dan Su  </center>
+<center> Northwestern Polytechnical University, Xi'an, China </center>
+<center>Cloud and Smart Industries Group, Tencent Technology Co., Ltd. China</center>
+
+<h2>0. Contents</h2>
+<ol>
+  <li><a href="#abstract">Abstract</a></li>
+  <li><a href="#Comparison">Demos</a></li>
+</ol>
+
+<br><br>
+<h2 id="abstract">1. Abstract<a name="abstract"></a></h2>
+<p> Speaker adaptation in text-to-speech synthesis (TTS) is to finetune a pre-trained TTS model to adapt to new target speakers with limited data. While much effort has been conducted towards this task, seldom work has been performed for low computational resource scenarios due to the challenges raised by the requirement of the lightweight model and less computational complexity. In this paper, a tiny VITS-based TTS model, named AdaVITS, for low computing resource speaker adaptation is proposed. To effectively reduce parameters and computational complexity of VITS, an iSTFT-based wave construction decoder is proposed to replace the upsampling-based decoder which is resource-consuming in the original VITS. Besides, NanoFlow is introduced to share the density estimate across flow blocks to reduce the parameters of the prior encoder. Furthermore, to reduce the computational complexity of the textual encoder, self-attention is replaced with linear attention. To deal with the instability caused by the simplified model, instead of using the original text encoder, phonetic posteriorgram (PPG) is utilized as the linguistic feature via a text-to-PPG module, which is then used as input for the encoder. Experiment shows that AdaVITS can generate stable and natural speech in speaker adaptation with 8.97M model parameters and 0.72GFlops computational complexity.
+</p>
+	<center><img src='raw/fig/model.png'></center>
+  <!-- <center><img src='raw/fig/decoder.png'></center> -->
+<br><br>
+
+<h2>2. Demos<a name="Comparison"></a></h2>
+<!-- <h3>Corresponding to section 3.2 in our paper, below lists the samples that are synthesized for evaluations on the ability to generate the desired speaking style and timbre. We compared our proposed method with the Multi-R and PB on style similarity and speaker similarity.</h3> -->
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><strong>Speaker</strong></th>
+      <th style="text-align: center"><strong>Record</strong></th>
+      <th style="text-align: center"><strong>adaVITS</strong></th>
+      <th style="text-align: center"><strong>adaVITS-e</strong></th>
+      <th style="text-align: center"><strong>fso+hifiganv1</strong></th>
+      <th style="text-align: center"><strong>fsl+hifiganv2</strong></th>
+      <th style="text-align: center"><strong>VITS</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+	<tr>
+    <tr>
+	  <td style="text-align: left" rowspan=2>p225</td>
+    
+    </tr>
+    <td style="text-align: left" colspan=6>
+
+      Text: She can scoop these things into three red bags, and we will go meet her Wednesday at the train station.</td>
+      
+	</tr>
+    <tr>
+      <td style="text-align: left"><audio src="raw/wav/ref1/p225_005.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/record/p225_005.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/adaVITS/p225_005.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/adaVITS-e/p225_005.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/fso/p225_005.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/fsl/p225_005.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/vits/p225_005.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <tr>
+        <td style="text-align: left" rowspan=2>p225</td>
+        
+        </tr>
+      <td style="text-align: left" colspan=6>
+
+        Text: The rainbow is a division of white light into many beautiful colors.</td>
+    </tr>
+	<tr>
+    <td style="text-align: left"><audio src="raw/wav/ref1/p225_007.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/record/p225_007.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS/p225_007.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS-e/p225_007.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fso/p225_007.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fsl/p225_007.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/vits/p225_007.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <tr>
+        <td style="text-align: left" rowspan=2>p227</td>
+        
+        </tr>
+      <td style="text-align: left" colspan=6>
+
+        Text: Movement has to take place.</td>
+	</tr>
+	<tr>
+    <td style="text-align: left"><audio src="raw/wav/ref1/p227_026.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/record/p227_026.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS/p227_026.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS-e/p227_026.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fso/p227_026.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fsl/p227_026.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/vits/p227_026.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <tr>
+        <td style="text-align: left" rowspan=2>p227</td>
+        
+        </tr>
+      <td style="text-align: left" colspan=6>
+
+        Text: However, there is an issue, isn't there ?</td>
+	</tr>
+	<tr>
+    <td style="text-align: left"><audio src="raw/wav/ref1/p227_400.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/record/p227_400.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS/p227_400.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS-e/p227_400.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fso/p227_400.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fsl/p227_400.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/vits/p227_400.wav" controls="" preload=""></audio></td>
+    </tr>
+   <tr>
+    <tr>
+      <td style="text-align: left" rowspan=2>p228</td>
+      
+      </tr>
+      <td style="text-align: left" colspan=6>
+
+        Text: I am just trying to do my job.</td>
+	</tr>
+	<tr>
+    <td style="text-align: left"><audio src="raw/wav/ref1/p228_154.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/record/p228_154.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS/p228_154.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS-e/p228_154.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fso/p228_154.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fsl/p228_154.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/vits/p228_154.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <tr>
+        <td style="text-align: left" rowspan=2>p228</td>
+        
+        </tr>
+      <td style="text-align: left" colspan=6>
+
+        Text: The workers do not want to read about their futures in newspapers.</td>
+	</tr>
+	<tr>
+    <td style="text-align: left"><audio src="raw/wav/ref1/p228_223.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/record/p228_223.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS/p228_223.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS-e/p228_223.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fso/p228_223.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fsl/p228_223.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/vits/p228_223.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <tr>
+        <td style="text-align: left" rowspan=2>p230</td>
+        
+        </tr>
+      <td style="text-align: left" colspan=6>
+
+        Text: They can leave at any time.</td>
+	</tr>
+	<tr>
+    <td style="text-align: left"><audio src="raw/wav/ref1/p230_281.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/record/p230_281.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS/p230_281.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS-e/p230_281.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fso/p230_281.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fsl/p230_281.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/vits/p230_281.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <tr>
+        <td style="text-align: left" rowspan=2>p230</td>
+        
+        </tr>
+      <td style="text-align: left" colspan=6>
+
+        Text: We think all other measures are not exhausted.</td>
+	</tr>
+	<tr>
+    <td style="text-align: left"><audio src="raw/wav/ref1/p230_347.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/record/p230_347.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS/p230_347.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS-e/p230_347.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fso/p230_347.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fsl/p230_347.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/vits/p230_347.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <tr>
+        <td style="text-align: left" rowspan=2>p231</td>
+        
+        </tr>
+      <td style="text-align: left" colspan=6>
+
+        Text: The rate of growth in road traffic is already beginning to slow.</td>
+	</tr>
+	<tr>
+    <td style="text-align: left"><audio src="raw/wav/ref1/p231_065.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/record/p231_065.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS/p231_065.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS-e/p231_065.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fso/p231_065.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fsl/p231_065.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/vits/p231_065.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <tr>
+        <td style="text-align: left" rowspan=2>p231</td>
+        
+        </tr>
+      <td style="text-align: left" colspan=6>
+
+        Text: Neither side would reveal the details of the offer.</td>
+	</tr>
+	<tr>
+    <td style="text-align: left"><audio src="raw/wav/ref1/p231_193.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/record/p231_193.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS/p231_193.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS-e/p231_193.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fso/p231_193.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fsl/p231_193.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/vits/p231_193.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <tr>
+        <td style="text-align: left" rowspan=2>p232</td>
+        
+        </tr>
+      <td style="text-align: left" colspan=6>
+
+        Text: Many complicated ideas about the rainbow have been formed. </td>
+	</tr>
+	<tr>
+    <td style="text-align: left"><audio src="raw/wav/ref1/p232_020.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/record/p232_020.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS/p232_020.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS-e/p232_020.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fso/p232_020.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fsl/p232_020.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/vits/p232_020.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <tr>
+        <td style="text-align: left" rowspan=2>p232</td>
+        
+        </tr>
+      <td style="text-align: left" colspan=6>
+
+        Text: Finally, he paid for the movie.</td>
+	</tr>
+	<tr>
+    <td style="text-align: left"><audio src="raw/wav/ref1/p232_279.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/record/p232_279.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS/p232_279.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS-e/p232_279.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fso/p232_279.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fsl/p232_279.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/vits/p232_279.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <tr>
+        <td style="text-align: left" rowspan=2>p233</td>
+        
+        </tr>
+      <td style="text-align: left" colspan=6>
+
+        Text: Of course, we will need to strengthen the squad for Europe.</td>
+	</tr>
+	<tr>
+    <td style="text-align: left"><audio src="raw/wav/ref1/p233_161.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/record/p233_161.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS/p233_161.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS-e/p233_161.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fso/p233_161.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fsl/p233_161.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/vits/p233_161.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <tr>
+        <td style="text-align: left" rowspan=2>p233</td>
+        
+        </tr>
+      <td style="text-align: left" colspan=6>
+
+        Text: Nobody else was with me.</td>
+	</tr>
+	<tr>
+    <td style="text-align: left"><audio src="raw/wav/ref1/p233_338.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/record/p233_338.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS/p233_338.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS-e/p233_338.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fso/p233_338.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fsl/p233_338.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/vits/p233_338.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <tr>
+        <td style="text-align: left" rowspan=2>p243</td>
+        
+        </tr>
+      <td style="text-align: left" colspan=6>
+
+        Text: They always want to give a performance.</td>
+	</tr>
+	<tr>
+    <td style="text-align: left"><audio src="raw/wav/ref1/p243_269.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/record/p243_269.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS/p243_269.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS-e/p243_269.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fso/p243_269.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fsl/p243_269.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/vits/p243_269.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <tr>
+        <td style="text-align: left" rowspan=2>p243</td>
+        
+        </tr>
+      <td style="text-align: left" colspan=6>
+
+        Text: The fans pay for their season tickets.</td>
+	</tr>
+	<tr>
+    <td style="text-align: left"><audio src="raw/wav/ref1/p243_284.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/record/p243_284.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS/p243_284.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS-e/p243_284.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fso/p243_284.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fsl/p243_284.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/vits/p243_284.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <tr>
+        <td style="text-align: left" rowspan=2>p254</td>
+        
+        </tr>
+      <td style="text-align: left" colspan=6>
+
+        Text: My mother is a widow.</td>
+	</tr>
+	<tr>
+    <td style="text-align: left"><audio src="raw/wav/ref1/p254_069.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/record/p254_069.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS/p254_069.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS-e/p254_069.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fso/p254_069.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fsl/p254_069.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/vits/p254_069.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <tr>
+        <td style="text-align: left" rowspan=2>p254</td>
+        
+        </tr>
+      <td style="text-align: left" colspan=6>
+
+        Text: It was a breathtaking moment.</td>
+	</tr>
+	<tr>
+    <td style="text-align: left"><audio src="raw/wav/ref1/p254_400.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/record/p254_400.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS/p254_400.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS-e/p254_400.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fso/p254_400.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fsl/p254_400.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/vits/p254_400.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <tr>
+        <td style="text-align: left" rowspan=2>p256</td>
+        
+        </tr>
+      <td style="text-align: left" colspan=6>
+
+        Text: Her home is perhaps a couple of miles from the town centre.</td>
+	</tr>
+	<tr>
+    <td style="text-align: left"><audio src="raw/wav/ref1/p256_134.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/record/p256_134.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS/p256_134.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS-e/p256_134.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fso/p256_134.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fsl/p256_134.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/vits/p256_134.wav" controls="" preload=""></audio></td>
+    </tr>
+    <tr>
+      <tr>
+        <td style="text-align: left" rowspan=2>p256</td>
+        
+        </tr>
+      <td style="text-align: left" colspan=6>
+
+        Text: Chelsea was a great club.</td>
+	</tr>
+	<tr>
+    <td style="text-align: left"><audio src="raw/wav/ref1/p256_257.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/record/p256_257.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS/p256_257.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/adaVITS-e/p256_257.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fso/p256_257.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/fsl/p256_257.wav" controls="" preload=""></audio></td>
+    <td style="text-align: left"><audio src="raw/wav/vits/p256_257.wav" controls="" preload=""></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+      <footer class="site-footer">
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com/">GitHub Pages</a>.</span>
+      </footer>
+    </section>
+</body></html>
