@@ -34,7 +34,8 @@
 <h2>0. Contents</h2>
 <ol>
   <li><a href="#abstract">Abstract</a></li>
-  <li><a href="#Comparison">Demos</a></li>
+  <li><a href="#Comparison">Demos on VCTK</a></li>
+  <li><a href="#Comparison_chinese">Demos on Chinese</a></li>
 </ol>
 
 <br><br>
@@ -45,17 +46,17 @@
   <!-- <center><img src='raw/fig/decoder.png'></center> -->
 <br><br>
 
-<h2>2. Demos<a name="Comparison"></a></h2>
-<!-- <h3>Corresponding to section 3.2 in our paper, below lists the samples that are synthesized for evaluations on the ability to generate the desired speaking style and timbre. We compared our proposed method with the Multi-R and PB on style similarity and speaker similarity.</h3> -->
+<h2>2. Demos on VCTK<a name="Comparison"></a></h2>
+<h3>Use the pre-trained model trains on LibriTTS. For speaker adaptation, 20 utterances are randomly selected for each speaker.</h3> 
 <table>
   <thead>
     <tr>
-      <th style="text-align: center"><strong>Speaker</strong></th>
+      <th style="text-align: center"><strong>speaker</strong></th>
       <th style="text-align: center"><strong>Record</strong></th>
       <th style="text-align: center"><strong>AdaVITS</strong></th>
       <th style="text-align: center"><strong>AdaVITS-e</strong></th>
-      <th style="text-align: center"><strong>fso+hifiganv1</strong></th>
-      <th style="text-align: center"><strong>fsl+hifiganv2</strong></th>
+      <th style="text-align: center"><strong>FS2-o+hifiganv1</strong></th>
+      <th style="text-align: center"><strong>FS2-l+hifiganv2</strong></th>
       <th style="text-align: center"><strong>VITS</strong></th>
     </tr>
   </thead>
@@ -423,6 +424,88 @@
     </tr>
   </tbody>
 </table>
+<p><b>Short summary:</b> The proposed AdaVITS achieves better naturalness and less computational complexity with FS2-l+hifiganv2. Although it is a gap with VITS/FS2-o+hifiganv1, it has better pronunciation stability and less parameter and computational complexity. The result is shown in the table below.</p>
+<center><img src='raw/fig/result.png'></center>
+
+
+<h2>3. Demos on Chinese<a name="Comparison_chinese"></a></h2>
+<!-- <h3>Corresponding to section 3.2 in our paper, below lists the samples that are synthesized for evaluations on the ability to generate the desired speaking style and timbre. We compared our proposed method with the Multi-R and PB on style similarity and speaker similarity.</h3> -->
+<h3>Use the pre-trained model trains on closed source dataset. For speaker adaptation, 20 utterances are randomly selected for each speaker.</h3> 
+
+<h3>3.1 Demos on open source dataset: Blizzard Challenge 2019</h3> 
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><strong>speaker</strong></th>
+   
+      <th style="text-align: center" colspan=5><strong>proposed</strong></th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td style="text-align: left"><audio src="raw/wav/chinese/lzy/ref.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/chinese/lzy/output.wav" controls="" preload=""></audio></td>
+   
+    </tr>
+
+   
+  </tbody>
+</table>
+
+<h3>3.2 Demos on closed source dataset</h3> 
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><strong>speaker</strong></th>
+   
+      <th style="text-align: center" colspan=5><strong>proposed</strong></th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td style="text-align: left"><audio src="raw/wav/chinese/guoshuangshuang/ref.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/chinese/guoshuangshuang/CF-002_hb_sub_032.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/chinese/guoshuangshuang/CF-002_hb_sub_092.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/chinese/guoshuangshuang/CF-002_hb_sub_165.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/chinese/guoshuangshuang/CF-002_hb_sub_195.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/chinese/guoshuangshuang/CF-002_hb_sub_206.wav" controls="" preload=""></audio></td>
+    </tr>
+
+    <tr>
+      <td style="text-align: left"><audio src="raw/wav/chinese/fuguiping/ref.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/chinese/fuguiping/CF-002_hb_sub_032.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/chinese/fuguiping/CF-002_hb_sub_092.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/chinese/fuguiping/CF-002_hb_sub_165.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/chinese/fuguiping/CF-002_hb_sub_195.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/chinese/fuguiping/CF-002_hb_sub_206.wav" controls="" preload=""></audio></td>
+    </tr>
+
+    <tr>
+      <td style="text-align: left"><audio src="raw/wav/chinese/baiyuxuan/ref.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/chinese/baiyuxuan/CF-002_hb_sub_032.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/chinese/baiyuxuan/CF-002_hb_sub_092.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/chinese/baiyuxuan/CF-002_hb_sub_165.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/chinese/baiyuxuan/CF-002_hb_sub_195.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/chinese/baiyuxuan/CF-002_hb_sub_206.wav" controls="" preload=""></audio></td>
+    </tr>
+ 
+    <tr>
+      <td style="text-align: left"><audio src="raw/wav/chinese/jinxiaoai/ref.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/chinese/jinxiaoai/CF-002_hb_sub_032.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/chinese/jinxiaoai/CF-002_hb_sub_092.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/chinese/jinxiaoai/CF-002_hb_sub_165.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/chinese/jinxiaoai/CF-002_hb_sub_195.wav" controls="" preload=""></audio></td>
+      <td style="text-align: left"><audio src="raw/wav/chinese/jinxiaoai/CF-002_hb_sub_206.wav" controls="" preload=""></audio></td>
+    </tr>
+   
+  </tbody>
+</table>
+
+
 
       <footer class="site-footer">
 
